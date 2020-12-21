@@ -12,20 +12,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
-//        supportFragmentManager.beginTransaction().replace(R.id.fragmentOne, MyGame(), "dynamic_fragment")
-
-        /*val fragment = Class.forName("com.gamesdk.MyGame").newInstance()
-        if (fragment is Fragment) {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragmentOne, fragment, "dynamic_fragment")
-                .addToBackStack("dynamic_fragment")
-                .commit()
-        }*/
-
         var intent: Intent? = null
         try {
             intent = Intent(this, Class.forName("com.gamesdk.MyGameActivity"))
