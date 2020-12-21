@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
@@ -40,9 +42,26 @@ class WebViewGameActivity : AppCompatActivity() {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT;
         }*/
 
-        webView.loadUrl(mData?.gameUrl)
+
         val webSettings: WebSettings = webView.getSettings()
         webSettings.javaScriptEnabled = true
+        webSettings.domStorageEnabled = true
+
+        webView.loadUrl(mData?.gameUrl)
+        webView.webViewClient = object : WebViewClient() {
+            override fun onPageFinished(view: WebView?, url: String?) {
+                super.onPageFinished(view, url)
+
+                //--------START----This code for if file is not load then reload again webview ------------//
+                if (view!!.title == "") {
+                    view.reload()
+                } else if (view.height == 0) {
+                    view.reload()
+                } else {
+//                    showLoadingDialog(false)
+                }
+            }
+        }
     }
 
     override fun onBackPressed() {

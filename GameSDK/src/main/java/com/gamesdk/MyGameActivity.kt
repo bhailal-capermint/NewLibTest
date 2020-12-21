@@ -7,13 +7,15 @@ import kotlinx.android.synthetic.main.activity_game.*
 
 
 public class MyGameActivity: AppCompatActivity() {
+    lateinit var gameGridAdapter: GameListAdapter
+    var gameList = ArrayList<Result>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
 
 
-        var gameList = ArrayList<Result>()
+
 
         gameList.add(Result(1, R.drawable.ic_dart, "Darts","http://staging-server.in/HTML_Games_Tijara/darts/"))
         gameList.add(Result(2, R.drawable.ic_disk_rush, "Disk Rush","http://staging-server.in/HTML_Games_Tijara/disk-rush/"))
@@ -21,9 +23,10 @@ public class MyGameActivity: AppCompatActivity() {
         gameList.add(Result(4, R.drawable.ic_marvel_bird, "Marvel Bird","http://staging-server.in/HTML_Games_Tijara/marvel-bird/"))
         gameList.add(Result(5, R.drawable.ic_tic_tac_toe, "Tic Tac Toe","http://staging-server.in/HTML_Games_Tijara/tic-tac-toe/"))
 
+
         var gridLayoutManager= GridLayoutManager(this, 3)
         recyclerViewGame.layoutManager = gridLayoutManager
-        var gameGridAdapter = GameListAdapter(
+        gameGridAdapter = GameListAdapter(
             gameList
         ) { position, game, v ->
             val myIntent = Intent(this@MyGameActivity, WebViewGameActivity::class.java)
@@ -31,8 +34,15 @@ public class MyGameActivity: AppCompatActivity() {
             startActivity(myIntent)
         }
         recyclerViewGame.adapter = gameGridAdapter
-
     }
+
+    fun setDataList(list: ArrayList<Result>){
+        if (list.isEmpty())
+        gameList = list
+        gameGridAdapter.notifyDataSetChanged()
+    }
+
+
 
 
 }
