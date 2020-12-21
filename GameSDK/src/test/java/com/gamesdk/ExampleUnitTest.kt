@@ -1,4 +1,4 @@
-package com.app.mylibrary
+package com.gamesdk
 
 import org.junit.Test
 

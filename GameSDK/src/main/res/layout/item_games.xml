@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_marginTop="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+   <androidx.appcompat.widget.AppCompatImageView
+       android:id="@+id/imageViewGame"
+       android:src="@drawable/ic_dart"
+       android:layout_width="match_parent"
+       android:layout_height="100dp"/>
+
+   <androidx.appcompat.widget.AppCompatTextView
+       android:id="@+id/textViewGameTitle"
+       android:layout_marginTop="10dp"
+       android:gravity="center"
+       android:textSize="16sp"
+       android:textColor="#000000"
+       android:text="Game"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"/>
+
+</LinearLayout>
